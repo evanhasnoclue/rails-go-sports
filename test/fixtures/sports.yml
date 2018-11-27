@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  catagory: MyString
+  title: MyString
+  start_time: 2018-11-26 18:44:15
+  end_time: 2018-11-26 18:44:15
+  price: 1.5
+  photo: MyString
+  province: MyString
+  city: MyString
+  district: MyString
+  address: MyString
+  capacity: 1
+  level: MyString
+  user: one
+
+two:
+  catagory: MyString
+  title: MyString
+  start_time: 2018-11-26 18:44:15
+  end_time: 2018-11-26 18:44:15
+  price: 1.5
+  photo: MyString
+  province: MyString
+  city: MyString
+  district: MyString
+  address: MyString
+  capacity: 1
+  level: MyString
+  user: two
