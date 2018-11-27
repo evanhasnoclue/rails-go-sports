@@ -9,7 +9,6 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :country
       t.string :avatarUrl
       t.text :info
-      t.integer :like, default:0
 
       t.timestamps
     end

@@ -13,6 +13,7 @@ class CreateSports < ActiveRecord::Migration[5.2]
       t.string :address
       t.integer :capacity
       t.string :level
+      t.integer :like, default:0
       t.references :user, foreign_key: true
 
       t.timestamps
