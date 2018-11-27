@@ -1,8 +1,9 @@
 class CreateSports < ActiveRecord::Migration[5.2]
   def change
     create_table :sports do |t|
-      t.string :catagory
+      t.string :category
       t.string :title
+      t.string :description
       t.time :start_time
       t.time :end_time
       t.float :price

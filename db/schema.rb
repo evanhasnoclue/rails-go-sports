@@ -50,8 +50,9 @@ ActiveRecord::Schema.define(version: 2018_11_27_024857) do
   end
 
   create_table "sports", force: :cascade do |t|
-    t.string "catagory"
+    t.string "category"
     t.string "title"
+    t.string "description"
     t.time "start_time"
     t.time "end_time"
     t.float "price"
@@ -62,6 +63,7 @@ ActiveRecord::Schema.define(version: 2018_11_27_024857) do
     t.string "address"
     t.integer "capacity"
     t.string "level"
+    t.integer "like", default: 0
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -77,7 +79,6 @@ ActiveRecord::Schema.define(version: 2018_11_27_024857) do
     t.string "country"
     t.string "avatarUrl"
     t.text "info"
-    t.integer "like", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
