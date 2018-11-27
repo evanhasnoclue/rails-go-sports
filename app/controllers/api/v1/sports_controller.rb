@@ -22,12 +22,12 @@ class Api::V1::SportsController < Api::V1::BaseController
     @sport = Sport.new(sport_params)
     # @sport.user = @user
     if @sport.save
-      if params[:tag]
-        params[:tag].each do |tag|
-        @sport.tag_list.add(tag)
-        @sport.save
-        end
-      end
+      # if params[:tag]
+      #   params[:tag].each do |tag|
+      #   @sport.tag_list.add(tag)
+      #   @sport.save
+      #   end
+      # end
       render json: @sport.to_json
     else
       render_error
@@ -52,7 +52,8 @@ class Api::V1::SportsController < Api::V1::BaseController
   private
 
   def sport_params
-    params.require(:sport).permit(:title, :description, :category, :start_time, :end_time, :price, :photo, :province, :city, :district, :address, :latitude, :longitude, :capacity, :level, :user_id, tag_list: [])
+    params.require(:sport).permit(:title, :description, :category, :start_time, :end_time, :price, :photo, :province, :city, :district, :address, :capacity, :level, :user_id)
+   # :latitude, :longitude, tag_list: []
   end
 
   def render_error

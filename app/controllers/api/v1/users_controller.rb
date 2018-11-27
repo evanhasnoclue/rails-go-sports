@@ -4,9 +4,9 @@ class Api::V1::UsersController < Api::V1::BaseController
   before_action :set_user, only: [:show, :update]
 
   def login
-    @user = User.find_or_create_by(wechat_id: wechat_user.fetch("openid"))
+    @user = User.find_or_create_by(open_id: wechat_user.fetch("openid"))
     render json: {
-      userId: @user.wechat_id
+      userId: @user.open_id
     }
   end
 
@@ -16,7 +16,7 @@ class Api::V1::UsersController < Api::V1::BaseController
   end
 
   def create
-    if @user == User.find_by(wechat_id: user_data[:wechat_id])
+    if @user = User.find_by(open_id: user_data[:open_id])
       render json: @user.to_json
     else
       @user = User.new(user_data)
@@ -43,6 +43,24 @@ class Api::V1::UsersController < Api::V1::BaseController
   # end
 
   def show
+    bookings = @user.bookings
+    sports = @user.sports
+    fav_sports = []
+    sports.each { |sport| fav_sports << sport.id }
+    bookings.each { |booking| fav_sports << booking.sport_id }
+    fav_sports.uniq!
+    @fav = {}
+    fav_sports.each do |i|
+      category = Sport.find(i.to_i).category
+      if @fav[category]
+        @fav[category] += 1
+      else
+        @fav[category] = 1
+      end
+      @fav.sort_by { |k, v| -v }
+    end
+
+
     # @sports_own = Sport.where("user_id": @user.id)
     # @bookings = Booking.where("user_id": @user.id)
     # @bookings = []
