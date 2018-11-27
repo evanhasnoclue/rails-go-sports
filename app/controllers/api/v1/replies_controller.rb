@@ -1,4 +1,4 @@
-class Api::V1::ReplysController < Api::V1::BaseController
+class Api::V1::RepliesController < Api::V1::BaseController
   def create
     @message = Message.find(params[:message_id])
     @reply = Reply.new(reply_params)
@@ -14,7 +14,7 @@ class Api::V1::ReplysController < Api::V1::BaseController
 
   private
   def reply_params
-    params.require(:reply).permit(:content, :read_status, :msg_time)
+    params.require(:reply).permit(:content, :read_status, :user_id, :msg_time)
   end
 
   def render_error
