@@ -1,6 +1,6 @@
-json.extract! @sport, :id, :title, :description, :category, :price, :photo, :province, :city, :district, :address, :latitude, :longitude, :capacity, :level, :user
-json.start_time @sport.start_time.strftime("%Y-%m-%d %H:%M")
-json.end_time @sport.end_time.strftime("%Y-%m-%d %H:%M")
+json.extract! @sport, :id, :title, :description, :category, :price, :photo, :province, :city, :district, :address, :latitude, :longitude, :capacity, :level, :like, :user
+json.start_time @sport.start_time
+json.end_time @sport.end_time
 # , :bookings, :messages
 json.messages @sport.messages do |message|
   json.extract! message, :id, :content, :created_at, :user
