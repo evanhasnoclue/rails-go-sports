@@ -57,7 +57,7 @@ class Api::V1::UsersController < Api::V1::BaseController
       else
         @fav[category] = 1
       end
-      @fav.sort_by { |k, v| -v }
+      @fav_sports = @fav.sort_by { |k, v| -v }
     end
 
 

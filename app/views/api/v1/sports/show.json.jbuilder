@@ -3,7 +3,11 @@ json.start_time @sport.start_time.strftime("%Y-%m-%d %H:%M")
 json.end_time @sport.end_time.strftime("%Y-%m-%d %H:%M")
 # , :bookings, :messages
 json.messages @sport.messages do |message|
-  json.extract! message, :id, :content,:replies, :created_at, :user
+  json.extract! message, :id, :content, :created_at, :user
+  json.replies message.replies do |reply|
+    json.extract! reply, :id, :content ,:user_id
+    json.user reply.user
+  end
   json.msg_time message.created_at.strftime("%Y-%m-%d %H:%M")
   # json.booking_user message.booking.user
 end
