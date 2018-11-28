@@ -4,8 +4,8 @@ class CreateSports < ActiveRecord::Migration[5.2]
       t.string :category
       t.string :title
       t.string :description
-      t.time :start_time
-      t.time :end_time
+      t.string :start_time
+      t.string :end_time
       t.float :price
       t.string :photo
       t.string :province
