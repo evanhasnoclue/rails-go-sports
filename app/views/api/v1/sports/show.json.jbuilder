@@ -7,6 +7,7 @@ json.messages @sport.messages do |message|
   json.replies message.replies do |reply|
     json.extract! reply, :id, :content ,:user_id
     json.user reply.user
+    json.reply_time reply.created_at.strftime("%Y-%m-%d %H:%M")
   end
   json.msg_time message.created_at.strftime("%Y-%m-%d %H:%M")
   # json.booking_user message.booking.user
