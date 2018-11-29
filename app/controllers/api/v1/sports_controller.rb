@@ -9,6 +9,43 @@ class Api::V1::SportsController < Api::V1::BaseController
   #   end
   # end
 
+  def query
+    # if params[:search].present?
+    #   PgSearch::Multisearch.rebuild(Sport)
+    #   results = PgSearch.multisearch(params[:search])
+    #   @sports = []
+    #   results.each do |i|
+    #     @sports << Sport.find(i.searchable_id)
+    #   end
+
+    # else
+    #   @sports = Sport.all
+    # end
+    # byebug
+    if params[:query].present?
+      query = params[:query]
+      title = query["title"]
+      category = query["category"]
+      start_time = query["start_time"]
+      province = query["province"]
+      city = query["city"]
+      district = query["district"]
+      level = query["level"]
+      sql_query = " \
+        title ILIKE :title \
+        AND start_time ILIKE :start_time \
+        AND category ILIKE :category \
+        AND province ILIKE :province \
+        AND city ILIKE :city \
+        AND district ILIKE :district \
+        AND level ILIKE :level \
+      "
+      @sports = Sport.where(sql_query, title: "%#{title}%", category: "%#{category}%", start_time: "%#{start_time}%", province: "%#{province}%", city: "%#{city}%", district: "%#{district}%", level: "%#{level}%")
+    else
+      @sports = Sport.all
+    end
+  end
+
   def index
     @sports = Sport.all
   end

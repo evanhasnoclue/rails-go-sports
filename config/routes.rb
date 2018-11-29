@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       post '/login', to: 'users#login'
+      get '/query', to: 'sports#query'
       resources :users, only: [ :create, :show, :update ]
       resources :sports, only: [:index, :show, :create, :update, :destroy ] do
         resources :bookings, only: [:create, :destroy]
