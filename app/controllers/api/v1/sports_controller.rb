@@ -52,7 +52,7 @@ class Api::V1::SportsController < Api::V1::BaseController
   private
 
   def sport_params
-    params.require(:sport).permit(:title, :description, :category, :start_time, :end_time, :price, :photo, :province, :city, :district, :address, :capacity, :level, :user_id, :latitude, :longitude)
+    params.require(:sport).permit(:title, :description, :category, :start_time, :end_time, :price, :photo, :province, :city, :district, :address, :capacity, :level, :user_id, :latitude, :longitude, :like)
   end
 
   def render_error
