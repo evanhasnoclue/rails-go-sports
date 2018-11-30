@@ -3,6 +3,7 @@ class Api::V1::UsersController < Api::V1::BaseController
   URL = "https://api.weixin.qq.com/sns/jscode2session".freeze
   before_action :set_user, only: [:show, :update]
 
+
   def login
     @user = User.find_or_create_by(open_id: wechat_user.fetch("openid"))
     render json: {
