@@ -6,9 +6,9 @@ json.messages @user.messages do |message|
     json.replies message.replies do |reply|
       json.extract! reply, :id, :content, :read_status, :user
       json.message reply.message
-      json.reply_time reply.created_at.strftime("%Y-%m-%d %H:%M")
+      json.create_time reply.created_at.strftime("%Y-%m-%d %H:%M")
     end
-  json.msg_time message.created_at.strftime("%Y-%m-%d %H:%M")
+  json.create_time message.created_at.strftime("%Y-%m-%d %H:%M")
 end
 json.fav_sports @fav_sports
 json.sports @user.sports do |sport|
