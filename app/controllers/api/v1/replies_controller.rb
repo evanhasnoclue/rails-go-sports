@@ -12,6 +12,16 @@ class Api::V1::RepliesController < Api::V1::BaseController
     end
   end
 
+  def update
+    @reply = Reply.find(params[:id])
+    if @reply.update(reply_params)
+      # redirect_to restaurant_path(@restaurant)
+      render json: @reply.to_json
+    else
+      render_error
+    end
+  end
+
   private
   def reply_params
     params.require(:reply).permit(:content, :read_status, :user_id, :msg_time)

@@ -22,6 +22,16 @@ class Api::V1::MessagesController < Api::V1::BaseController
 
   end
 
+  def update
+    @message = Message.find(params[:id])
+    if @message.update(message_params)
+      # redirect_to restaurant_path(@restaurant)
+      render json: @message.to_json
+    else
+      render_error
+    end
+  end
+
   private
 
   def message_params

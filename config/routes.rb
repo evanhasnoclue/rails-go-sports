@@ -4,6 +4,8 @@ Rails.application.routes.draw do
       post '/login', to: 'users#login'
       get '/query', to: 'sports#query'
       resources :users, only: [ :create, :show, :update ]
+      resources :messages, only: [ :update]
+      resources :replies, only: [ :update]
       resources :sports, only: [:index, :show, :create, :update, :destroy ] do
         resources :bookings, only: [:create, :destroy]
         resources :messages, only: [:create]
