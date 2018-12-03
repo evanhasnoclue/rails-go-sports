@@ -1,8 +1,8 @@
 
-json.extract! @user, :id, :nickname, :open_id, :gender, :city, :province, :country, :avatarUrl
+json.extract! @user, :id, :nickname, :open_id, :gender, :city, :province, :country, :avatarUrl, :replies
 json.fav_sports @fav_sports
 json.sports @user.sports do |sport|
-  json.extract! sport, :id, :title, :description, :category, :price, :photo, :province, :city, :district, :address, :latitude, :longitude, :capacity, :level, :like, :replies
+  json.extract! sport, :id, :title, :description, :category, :price, :photo, :province, :city, :district, :address, :latitude, :longitude, :capacity, :level, :like
   json.start_time sport.start_time
   json.end_time sport.end_time
   json.messages sport.messages
