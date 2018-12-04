@@ -23,6 +23,7 @@ json.sports @user.sports do |sport|
 end
 json.bookings @user.bookings do |booking|
   json.extract! booking, :id, :sport
+  json.extract! booking.sport, :id, :category, :title, :description, :start_time, :end_time, :price, :photo, :province, :city, :district, :address, :capacity, :level, :like, :user_id, :created_at, :updated_at, :latitude, :longitude, :bookings
   json.create_date booking.created_at.strftime("%m/%d/%y")
 end
 # json.messages @user.messages do |message|
