@@ -15,7 +15,10 @@ json.sports @user.sports do |sport|
   json.extract! sport, :id, :title, :description, :category, :price, :photo, :province, :city, :district, :address, :latitude, :longitude, :capacity, :level, :like, :bookings
   json.start_time sport.start_time
   json.end_time sport.end_time
-  json.messages sport.messages
+  json.messages sport.messages do |message|
+    json.extract! message, :id, :content, :user_id, :read_status, :replies
+    json.created_time message.created_at.strftime("%Y-%m-%d %H:%M")
+  end
   # do |message|
   #   json.extract! replies, message.replies
   # end
