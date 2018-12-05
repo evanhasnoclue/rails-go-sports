@@ -50,14 +50,18 @@ class Api::V1::UsersController < Api::V1::BaseController
     bookings.each { |booking| fav_sports << booking.sport_id }
     fav_sports.uniq!
     @fav = {}
-    fav_sports.each do |i|
-      category = Sport.find(i.to_i).category
-      if @fav[category]
-        @fav[category] += 1
-      else
-        @fav[category] = 1
+    if fav_sports == []
+      @fav_sports=[]
+    else
+      fav_sports.each do |i|
+        category = Sport.find(i.to_i).category
+        if @fav[category]
+          @fav[category] += 1
+        else
+          @fav[category] = 1
+        end
+        @fav_sports = @fav.sort_by { |k, v| -v }
       end
-      @fav_sports = @fav.sort_by { |k, v| -v }
     end
 
 
