@@ -1,4 +1,4 @@
-json.extract! @sport, :id, :title, :description, :category, :price, :photo, :province, :city, :district, :address, :latitude, :longitude, :capacity, :level, :like, :user
+json.extract! @sport, :id, :title, :description, :category, :price, :photo, :province, :city, :district, :address, :latitude, :longitude, :capacity, :level, :like, :user, :real
 json.start_time @sport.start_time
 json.end_time @sport.end_time
 # , :bookings, :messages
